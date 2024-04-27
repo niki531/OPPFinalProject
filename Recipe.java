@@ -39,5 +39,8 @@ public class Recipe {
     public ArrayList<String> getIngredientList(){
     	return this.ingredientList;
     }
+    
+    public void clear() {
+    	this.clear();
+    }
 }
-
