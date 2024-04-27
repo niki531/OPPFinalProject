@@ -55,8 +55,4 @@ public class SucceedGUI extends JFrame {
     public void exitClicked() {
         System.exit(0);
     }
-
-    public static void main(String[] args) {
-        new SucceedGUI(1); 
-    }
 }
