@@ -29,7 +29,7 @@ public class Recipe {
         Random rand = new Random();
         for (String ingredient : ingredientList) {
             if (rand.nextInt(10) < 2) {
-                sb.append("- ").append("\n"); // Just a dash if random is less than 2
+                sb.append("- ").append("\n");
             } else {
                 sb.append("- ").append(ingredient).append("\n");
             }
