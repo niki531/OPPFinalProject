@@ -33,21 +33,21 @@ public class InstructionGUI extends JFrame {
         });
 
         txtInstruction = new JTextArea(10, 30);
-        txtInstruction.setText(instruction);
+        displayInstruction();        
+        
+
+    }
+
+    public void displayInstruction() {
+        txtInstruction.setText(instruction); 
         txtInstruction.setWrapStyleWord(true);
         txtInstruction.setLineWrap(true);
         txtInstruction.setEditable(false); 
         txtInstruction.setOpaque(false); 
         txtInstruction.setMargin(new Insets(10, 30, 10, 30)); 
-
         add(txtInstruction, BorderLayout.CENTER);
         add(btnExit, BorderLayout.SOUTH);
-
         setVisible(true);
-    }
-
-    public void displayInstruction() {
-        txtInstruction.setText(instruction); 
     }
 
     public void exitClicked() {
