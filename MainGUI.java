@@ -9,10 +9,17 @@ public class MainGUI extends JFrame {
     private JButton btnExit;
 
     public MainGUI() {
-        setTitle("Main GUI");
-        setSize(800, 600);
-        setLayout(new FlowLayout()); 
+        setTitle("Bartenders Simulation");
+        setSize(800, 600); 
+        setLocationRelativeTo(null); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridBagLayout()); 
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0; 
+        constraints.gridy = 0; 
+        constraints.insets = new Insets(10, 10, 10, 10); 
 
         btnInstruction = new JButton("Instructions");
         btnStartGame = new JButton("Start Game");
@@ -36,15 +43,19 @@ public class MainGUI extends JFrame {
             }
         });
 
-        add(btnInstruction);
-        add(btnStartGame);
-        add(btnExit);
+        add(btnInstruction, constraints);
+        
+        constraints.gridx = 1; 
+        add(btnStartGame, constraints);
+
+        constraints.gridx = 2; 
+        add(btnExit, constraints);
 
         setVisible(true);
     }
 
     public void instructionClicked() {
-        System.out.println("Instructions button clicked");
+        new InstructionGUI(); 
     }
 
     public void startGameClicked() {
@@ -52,10 +63,14 @@ public class MainGUI extends JFrame {
     }
 
     public void exitClicked() {
-        System.exit(0); 
+        System.exit(0);
     }
 
     public static void main(String[] args) {
-        new MainGUI(); 
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MainGUI(); 
+            }
+        });
     }
 }
