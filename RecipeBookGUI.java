@@ -7,11 +7,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RecipeBookGUI extends JFrame{
-    public static int counter; 
     private ArrayList<Recipe> menu;
     private JButton btnExit;
     private JTextArea textArea;
-    int checktimes;
+    private int checktimes;
 
     public RecipeBookGUI(int checktimes) {
     	this.checktimes = checktimes;
