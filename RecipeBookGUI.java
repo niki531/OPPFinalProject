@@ -7,14 +7,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RecipeBookGUI extends JFrame{
-    private ArrayList<Recipe> menu;
+    private ArrayList<Recipe> recipeBook;
     private JButton btnExit;
     private JTextArea textArea;
     private int checktimes;
 
-    public RecipeBookGUI(int checktimes) {
+    public RecipeBookGUI(int checktimes, RecipeBook rb) {
     	this.checktimes = checktimes;
-        menu = new ArrayList<>();
+        this.recipeBook = rb.getRecipes();
         setSize(800,600);
         setLocationRelativeTo(null); 
         setLayout(new BorderLayout()); 
@@ -30,13 +30,10 @@ public class RecipeBookGUI extends JFrame{
             }
         });        
     }
-    public void addMenu(Recipe r) {
-    	this.menu.add(r);
-    }
 
     public void displayAll() {
         StringBuilder allRecipes = new StringBuilder();
-        for (Recipe recipe : menu) {
+        for (Recipe recipe : recipeBook) {
             allRecipes.append(recipe.displayRecipe());
         }
         textArea.setText(allRecipes.toString());
@@ -44,7 +41,7 @@ public class RecipeBookGUI extends JFrame{
 
     public void displayPart() {
         StringBuilder partRecipes = new StringBuilder();
-        for (Recipe recipe : menu) {
+        for (Recipe recipe : recipeBook) {
             partRecipes.append(recipe.displayPartRecipe());
         }
         textArea.setText(partRecipes.toString());
