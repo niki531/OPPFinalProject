@@ -28,13 +28,16 @@ public class Recipe {
         sb.append("Partial Recipe for: ").append(name).append("\n");
         Random rand = new Random();
         for (String ingredient : ingredientList) {
-            if (rand.nextInt(10) < 2) {
-                sb.append("- ").append("\n");
+            if (rand.nextInt(10) < 3) {
+                sb.append("- ?").append("\n"); // Just a dash if random is less than 2
             } else {
                 sb.append("- ").append(ingredient).append("\n");
             }
         }
         return sb.toString();
     }
-    
+    public ArrayList<String> getIngredientList(){
+    	return this.ingredientList;
+    }
 }
+
