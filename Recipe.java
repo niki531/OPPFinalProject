@@ -4,9 +4,11 @@ import java.util.Random;
 public class Recipe {
     private String name;
     private ArrayList<String> ingredientList;
+    private int price;
 
-    public Recipe(String name) {
+    public Recipe(String name, int price) {
         this.name = name;
+        this.price = price;
         this.ingredientList = new ArrayList<>();
     }
 
@@ -42,5 +44,8 @@ public class Recipe {
     
     public void clear() {
     	this.clear();
+    }
+    public int getPrice(){
+        return this.price;
     }
 }
