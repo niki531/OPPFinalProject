@@ -29,7 +29,7 @@ public class RecipeBookGUI extends JFrame{
                 exitClicked();
             }
         });  
-        if (checktimes == 0) {
+        if (this.checktimes == 0) {
     		this.displayAll();
     	}
     	else {
