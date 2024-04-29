@@ -1,0 +1,2 @@
+Martini;10;ice;gin;gin;gin;gin;gin;dry vermouth;orange bitters;stir;lemon twist
+Whiskey Sour;15;bourbon whiskey;bourbon whiskey;bourbon whiskey;bourbon whiskey;lemon juice;lemon juice;simple syrup;egg white;shake;orange slice
