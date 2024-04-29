@@ -28,7 +28,24 @@ public class RecipeBookGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 exitClicked();
             }
-        });        
+        });  
+        if (checktimes == 0) {
+    		this.displayAll();
+    	}
+    	else {
+    		this.displayPart();
+    	}
+    	
+    	textArea.setWrapStyleWord(true);
+    	textArea.setLineWrap(true);
+    	textArea.setEditable(false); 
+    	textArea.setOpaque(false); 
+    	textArea.setMargin(new Insets(10, 30, 10, 30)); 
+    	
+    	add(textArea, BorderLayout.CENTER);
+        add(btnExit, BorderLayout.SOUTH);
+
+        setVisible(true);      
     }
 
     public void displayAll() {
@@ -45,26 +62,6 @@ public class RecipeBookGUI extends JFrame{
             partRecipes.append(recipe.displayPartRecipe());
         }
         textArea.setText(partRecipes.toString());
-    }
-
-    public void display() {
-    	if (checktimes == 0) {
-    		this.displayAll();
-    	}
-    	else {
-    		this.displayPart();
-    	}
-    	
-    	textArea.setWrapStyleWord(true);
-    	textArea.setLineWrap(true);
-    	textArea.setEditable(false); 
-    	textArea.setOpaque(false); 
-    	textArea.setMargin(new Insets(10, 30, 10, 30)); 
-    	
-    	add(textArea, BorderLayout.CENTER);
-        add(btnExit, BorderLayout.SOUTH);
-
-        setVisible(true);
     }
     
     private void exitClicked() {
