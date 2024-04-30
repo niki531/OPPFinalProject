@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -95,7 +94,7 @@ public class Level1GUI extends JFrame {
         btnLemonTwist = new JButton("Add Lemon Twist");
         btnOrangeSlice = new JButton("Add Orange Slice");
         btnCherry = new JButton("Add Cherry");
-        btnCustomer1 = new JButton(this.customer1.getName()+": "+ this.recipebook.getRecipes().get(0).getName()+" $"+ this.recipebook.getRecipes().get(0).getPrice());
+        btnCustomer1 = new JButton(this.customer1.getName()+": "+ this.recipebook.getRecipes().get(0).getName()+" $"+ this.recipebook.getRecipes().get(0).getPrice()+"+"+this.customer1.getTip());
 
         
         GridBagConstraints constraints = new GridBagConstraints();
