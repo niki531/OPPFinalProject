@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,6 +41,9 @@ public class Level1GUI extends JFrame {
     private JButton btnRim;
     private JButton btnStrain;
 
+    private JButton btnExitLevel1;
+    private JButton btnRemake;
+    
     private JButton btnLemonTwist;
     private JButton btnOrangeSlice;
     private JButton btnCherry;
@@ -84,6 +88,9 @@ public class Level1GUI extends JFrame {
         btnStir = new JButton("Stir");
         btnRim = new JButton("Rim");
         btnStrain = new JButton("Strain");
+        
+        btnExitLevel1 = new JButton("Exit Level 1");
+        btnRemake = new JButton("Remake");
 
         btnLemonTwist = new JButton("Add Lemon Twist");
         btnOrangeSlice = new JButton("Add Orange Slice");
@@ -99,8 +106,17 @@ public class Level1GUI extends JFrame {
         constraints.gridy = 0; 
         add(btnCustomer1,constraints);
         constraints.gridx = 0; 
-        constraints.gridy = 0; 
+        constraints.gridy = 1; 
         add(btnRecipe,constraints);
+        constraints.gridx = 0; 
+        constraints.gridy = 0; 
+        add(btnExitLevel1,constraints);
+        constraints.gridx = 0; 
+        constraints.gridy = 0; 
+        add(btnExitLevel1,constraints);
+        constraints.gridx = 4; 
+        constraints.gridy = 9; 
+        add(btnRemake,constraints);
         
         JButton[] buttons = {
             btnGin, btnDryVermouth, btnOrangeBitters, btnWhiteRum, btnTequila, 
@@ -144,7 +160,7 @@ public class Level1GUI extends JFrame {
         aimArea.setOpaque(false);
         aimArea.setText("Aim: $"+String.valueOf(this.aimMoney));
         constraints.gridx = 0; 
-        constraints.gridy = 2;
+        constraints.gridy = 3;
         add(aimArea,constraints);
 
         this.gainArea = new JTextArea(200, 200);
@@ -155,7 +171,7 @@ public class Level1GUI extends JFrame {
         gainArea.setOpaque(false);
         gainArea.setText("Gained: $"+String.valueOf(this.gainMoney));
         constraints.gridx = 0; 
-        constraints.gridy = 3;
+        constraints.gridy = 4;
         add(gainArea,constraints);
 
         this.timeArea = new JTextArea(200, 200);
@@ -178,7 +194,7 @@ public class Level1GUI extends JFrame {
         });
 
         constraints.gridx = 0; 
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         add(timeArea,constraints);
         
         setVisible(true);
@@ -401,6 +417,20 @@ public class Level1GUI extends JFrame {
                 currentProduct.setText(product.displayProduct());
             }
         });
+        
+        btnExitLevel1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exitClicked();
+            }
+        });
+        btnRemake.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               product.clear();
+               currentProduct.setText(product.displayProduct());
+            }
+        });
 
     }
 
@@ -434,6 +464,12 @@ public class Level1GUI extends JFrame {
             gameFail(rb);
         }
     }
+    
+    
+    private void exitClicked() {
+    	this.dispose();
+        MainGUI main = new MainGUI(recipebook);
+    }
+
 
 }
-
