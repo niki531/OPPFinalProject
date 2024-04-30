@@ -8,9 +8,9 @@ public class Customer {
         this.name = name;
         this.order = order;
         Random random = new Random();
-        int rd = random.nextInt(30);
+        int tip = random.nextInt(5);
         int price = this.order.getPrice();
-        this.priceNTip = (int)price *(1+ rd/100); 
+        this.priceNTip = price + tip; 
     }
 
     public int compareNPay(Recipe recipe) {
