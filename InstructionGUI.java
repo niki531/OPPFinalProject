@@ -6,15 +6,17 @@ public class InstructionGUI extends JFrame {
 
     private JButton btnExit;
     private JTextArea txtInstruction;
-    private String instruction = "Welcome to Bartenders Simulation!\n" + 
-                                 "In this game, you will take on the role of a bartender, mixing cocktails to meet customer preferences within a fixed amount of time.\n" +
-                                 "At the beginning of each level, you will be shown a cocktail recipe. Pay attention to the required ingredients, the amount needed, and the specific mixing sequence. (Each serving of spirits is 1/2oz)\n"+
-                                 "To make a successful cocktail, you must add ingredients and perform operations in the correct sequence.\n"+
-                                 "Select ingredients and perform operations by clicking the corresponding buttons. The number of clicks should match the amount needed.\n" +
-                                 "Each level includes a list of customers, each requesting specific cocktails. Once a cocktail is ready, click the customer button to serve. You must only make one cocktail at a time.\n" +
-                                 "Customer will check if the cocktail matches the recipe requested. A perfect match earns you money and possible tips, but errors result in no payment.\n" +
-                                 "You must earn enough money within the time limit to pass the level and advance.\n" + 
-                                 "Click the 'Recipe' button for a full view of the recipe at any time during the game. But if you clicked more than once, only part of the recipe will shown.\n" + 
+    private String instruction = "Welcome to Bartenders Simulation!\n\n" + 
+                                 "In this game, you will take on the role of a bartender, mixing cocktails to meet customer preferences within a fixed amount of time.\n\n" +
+                                 "At the beginning of each level, you will be shown a list of customers, each asking for a specific cocktail.\n\n"+
+                                 "Click the recipe book to check the recipe book. Find the recipe you need, pay attention to the required ingredients, the amount needed, and the specific mixing sequence. (Each serving of spirits is 1/2oz)\n"+
+                                 "The first time of checking recipe book is free. But if you check it more than once, only part of the recipe will shown.\n\n" + 
+                                 "To make a successful cocktail, you must add ingredients and perform operations in the correct sequence.\n\n"+
+                                 "Select ingredients and perform operations by clicking the corresponding buttons. The number of clicks should match the amount needed. \n\n" +
+                                 "If you make a mistake, don't worry. You can always click remake button to clear everything you have added. But you must only make one cocktail at a time."+
+                                 "Once a cocktail is ready, click the customer button to serve.\n\n" +
+                                 "Customer will check if the cocktail matches the recipe requested. A perfect match earns you money and possible tips, but errors result in no payment.\n\n" +
+                                 "You must earn enough money within the time limit to pass the level and advance.\n\n" + 
                                  "Good Luck and Happy Mixing!";                                 
                                  
     public InstructionGUI() {
