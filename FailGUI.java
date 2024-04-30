@@ -7,10 +7,12 @@ public class FailGUI extends JFrame {
     private JTextArea txtFail;
     private JButton btnNew;
     private JButton btnExit;
+    private RecipeBook rb;
 
-    public FailGUI() {
+    public FailGUI(RecipeBook rb) {
+        this.rb = rb;
         setTitle("Game Failed...");
-        setSize(800, 600);
+        setSize(1000, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -45,7 +47,7 @@ public class FailGUI extends JFrame {
     }
 
     public void newClicked() {
-        new MainGUI();
+        new MainGUI(rb);
     }
 
     public void exitClicked() {
