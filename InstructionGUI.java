@@ -6,13 +6,12 @@ public class InstructionGUI extends JFrame {
 
     private JButton btnExit;
     private JTextArea txtInstruction;
-
     private String instruction = "Welcome to Bartenders Simulation!\n" + 
                                  "In this game, you will take on the role of a bartender, mixing cocktails to meet customer preferences within a fixed amount of time.\n" +
-                                 "At the beginning of each level, you will be shown a cocktail recipe. Pay attention to the required ingredients, the amount needed, and the specific mixing sequence.\n"+
+                                 "At the beginning of each level, you will be shown a cocktail recipe. Pay attention to the required ingredients, the amount needed, and the specific mixing sequence. (Each serving of spirits is 1/2oz)\n"+
                                  "To make a successful cocktail, you must add ingredients and perform operations in the correct sequence.\n"+
                                  "Select ingredients and perform operations by clicking the corresponding buttons. The number of clicks should match the amount needed.\n" +
-                                 "Each level features a list of customers, each requesting specific cocktails. Once a cocktail is ready, click the customer button to serve. You must only make one cocktail at a time.\n" +
+                                 "Each level includes a list of customers, each requesting specific cocktails. Once a cocktail is ready, click the customer button to serve. You must only make one cocktail at a time.\n" +
                                  "Customer will check if the cocktail matches the recipe requested. A perfect match earns you money and possible tips, but errors result in no payment.\n" +
                                  "You must earn enough money within the time limit to pass the level and advance.\n" + 
                                  "Click the 'Recipe' button for a full view of the recipe at any time during the game. But if you clicked more than once, only part of the recipe will shown.\n" + 
@@ -20,12 +19,12 @@ public class InstructionGUI extends JFrame {
                                  
     public InstructionGUI() {
         setTitle("Instructions");
-        setSize(800, 600); 
+        setSize(1000, 800); 
         setLocationRelativeTo(null); 
         setLayout(new BorderLayout()); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
 
-        btnExit = new JButton("Exit");
+        btnExit = new JButton("Return");
         btnExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 exitClicked();
