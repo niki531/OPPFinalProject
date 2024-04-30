@@ -7,10 +7,12 @@ public class MainGUI extends JFrame {
     private JButton btnInstruction;
     private JButton btnStartGame;
     private JButton btnExit;
+    private RecipeBook rb;
 
-    public MainGUI() {
+    public MainGUI(RecipeBook rb) {
+        this.rb = rb;
         setTitle("Bartenders Simulation");
-        setSize(800, 600); 
+        setSize(1000, 800); 
         setLocationRelativeTo(null); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout()); 
@@ -59,7 +61,8 @@ public class MainGUI extends JFrame {
     }
 
     public void startGameClicked() {
-        System.out.println("Start Game button clicked");
+        new Level1GUI(rb);
+        this.dispose();
     }
 
     public void exitClicked() {
