@@ -3,12 +3,13 @@ public class Customer {
     private int priceNTip;
     private String name;
     private Recipe order;
+    private int tip;
 
     public Customer(String name, Recipe order) {
         this.name = name;
         this.order = order;
         Random random = new Random();
-        int tip = random.nextInt(5);
+        this.tip = random.nextInt(5);
         int price = this.order.getPrice();
         this.priceNTip = price + tip; 
     }
@@ -21,6 +22,10 @@ public class Customer {
         }
     }
     
+    public int getTip(){
+        return this.tip;
+    }
+
     public String getName() {
         return this.name;
     }
