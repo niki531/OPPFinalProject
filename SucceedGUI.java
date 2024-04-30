@@ -8,11 +8,13 @@ public class SucceedGUI extends JFrame {
     private JButton btnNextLevel;
     private JButton btnExit;
     private int currentLevel;
+    private RecipeBook rb;
 
-    public SucceedGUI(int currentLevel) {
+    public SucceedGUI(int currentLevel, RecipeBook rb) {
         this.currentLevel = currentLevel;
+        this.rb = rb;
         setTitle("Level "+currentLevel+" Passed");
-        setSize(800, 600);
+        setSize(1000, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -28,7 +30,7 @@ public class SucceedGUI extends JFrame {
         btnNextLevel = new JButton("Next Level");
         btnNextLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                nextClicked();
+                nextClicked(rb);
             }
         });
         panel.add(btnNextLevel);
@@ -46,9 +48,10 @@ public class SucceedGUI extends JFrame {
         setVisible(true);
     }
 
-    public void nextClicked() {
+    public void nextClicked(RecipeBook rb) {
         if (currentLevel== 1){
-            new Level2GUI();
+            //new Level2GUI(rb);
+            System.out.println("level2");
         }
     }
 
