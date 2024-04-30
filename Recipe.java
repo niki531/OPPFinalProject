@@ -24,6 +24,14 @@ public class Recipe {
         }
         return sb.toString();
     }
+    public String displayProduct() {
+        StringBuilder sb = new StringBuilder();
+      sb.append(name).append(": ");
+      for (String ingredient : ingredientList) {
+          sb.append(ingredient).append("; ");
+      }
+      return sb.toString();
+  }
 
     public String displayPartRecipe() {
     	StringBuilder sb = new StringBuilder();
@@ -43,9 +51,13 @@ public class Recipe {
     }
     
     public void clear() {
-    	this.clear();
+        this.ingredientList = new ArrayList<>();
     }
+
     public int getPrice(){
         return this.price;
+    }
+    public String getName(){
+        return this.name;
     }
 }
