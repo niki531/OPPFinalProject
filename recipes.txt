@@ -1,6 +1,6 @@
-Martini;10;ice;gin;gin;gin;gin;gin;dry vermouth;orange bitters;stir;lemon twist
-Whiskey Sour;15;bourbon whiskey;bourbon whiskey;bourbon whiskey;bourbon whiskey;lemon juice;lemon juice;simple syrup;egg white;shake;orange slice
-Mojito;20;mint leaves;lime wedge;muddle;lime wedge;lime wedge;sugar;sugar;ice;white rum;white rum;white rum;club soda;stir;lime wedge
-Margarita;25;tequila;tequila;tequila;tequila;lime juice;lime juice;triple sec;ice;shake;lime juice;salt;rim;ice;strain;lime wedge
-Side Car;30;bourbon whiskey;bourbon whiskey;bourbon whiskey;bourbon whiskey;lemon juice;lemon juice;triple sec;triple sec;ice;shake;lemon juice;salt;ice;strain;lemon twist
-Gin Fizz;35;ice;gin;gin;gin;gin;lemon juice;lemon juice;simple syrup;simple syrup;egg white;shake;ice;strain;club soda;stir;cherry
+Martini;10;Ice;Gin;Gin;Gin;Gin;Gin;Dry Vermouth;Orange Bitters;Stir;Lemon Twist
+Whiskey Sour;15;Bourbon Whiskey;Bourbon Whiskey;Bourbon Whiskey;Bourbon Whiskey;Lemon Juice;Lemon Juice;Simple Syrup;Egg White;Shake;Orange Slice
+Mojito;20;Mint Leaves;Lime Wedge;Muddle;Lime Wedge;Lime Wedge;Sugar;Sugar;Ice;White Rum;White Rum;White Rum;Club Soda;Stir;Lime Wedge
+Margarita;25;Tequila;Tequila;Tequila;Tequila;Lime Juice;Lime Juice;Triple Sec;Ice;Shake;Lime Juice;Salt;Rim;Ice;Strain;Lime Wedge
+Side Car;30;Bourbon Whiskey;Bourbon Whiskey;Bourbon Whiskey;Bourbon Whiskey;Lemon Juice;Lemon Juice;Triple Sec;Triple Sec;Ice;Shake;Lemon Juice;Salt;Ice;Strain;Lemon Wwist
+Gin Fizz;35;Ice;Gin;Gin;Gin;Gin;Lemon Juice;Lemon Juice;Simple Syrup;Simple Syrup;Egg White;Shake;Ice;Strain;Club Soda;Stir;Cherry
