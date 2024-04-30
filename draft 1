@@ -1,0 +1,213 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+abstract class Level extends JFrame {
+    protected ArrayList<Customer> customers;
+    protected RecipeBook recipeBook;
+    protected Recipe currentRecipe;
+    protected int aimMoney;
+    protected int gainedMoney;
+    protected int checkTimes;
+    protected int levelTime;
+    protected int count;
+    protected int currentLevel;
+    protected JButton[] ingredientButtons;
+    protected JButton btnRecipe, btnRemake;
+
+    protected JTextArea currentProductTextArea;
+    protected JTextArea aimTextArea;
+    protected JTextArea gainedTextArea;
+    protected JTextArea timeTextArea;
+    protected JButton btnExitLevel;
+    protected Timer timer;
+    protected JLabel label;
+
+    public Level(RecipeBook recipeBook) {
+        this.recipeBook = recipeBook;
+        this.currentRecipe = new Recipe("Product", 0);
+        this.customers = new ArrayList<>();
+        this.levelTime = 10000; 
+        this.aimMoney = 15; 
+        this.gainedMoney = 0;
+        this.checkTimes = 0;
+        this.count = 0;
+        setupGUI();
+        setupTimer();
+        timeUp();
+    }
+
+    protected void setupGUI() {
+        setTitle("Level " + currentLevel);
+        setSize(1000, 800);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridBagLayout());
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        addButtons(constraints);
+        setupTextAreas(constraints);
+
+        setVisible(true);
+    }
+
+    protected void setupTimer() {
+        timeTextArea = new JTextArea("Remaining Time: " + levelTime);
+        timeTextArea.setEditable(false);
+        timeTextArea.setOpaque(false);
+        timer = new Timer(1000, e -> {
+            count++;
+            timeTextArea.setText("Remaining Time: " + (levelTime - count));
+            if (count >= levelTime) {
+                timeUp();
+            }
+        });
+        timer.start();
+    }
+
+    protected void addButtons(GridBagConstraints constraints) {
+        String[] ingredients = {
+            "Ice", "Gin", "Dry Vermouth", "Orange Bitters", "Mint Leaves", "Lime Wedge", "Sugar",
+            "White Rum", "Club Soda", "Tequila", "Lime Juice", "Triple Sec", "Bourbon Whiskey",
+            "Lemon Juice", "Simple Syrup", "Egg White", "Salt", "Lemon Twist", "Orange Slice", "Cherry",
+            "Muddle", "Shake", "Stir", "Rim", "Strain"
+        };
+        ingredientButtons = new JButton[ingredients.length];
+        int column = 2;
+        int row = 0;
+        for (String ingredient : ingredients) {
+            JButton button = createIngredientButton(ingredient);
+            ingredientButtons[row] = button;
+            constraints.gridx = column;
+            constraints.gridy = row++;
+            add(button, constraints);
+            if (row == 10) {
+                row = 0;
+                column++;
+            }
+        }
+
+        btnRecipe = new JButton("Recipe Book");
+        btnRecipe.addActionListener(this::displayRecipe);
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        add(btnRecipe, constraints);
+
+        btnRemake = new JButton("Remake");
+        btnRemake.addActionListener(e -> {
+            currentRecipe.clear();
+            currentProductTextArea.setText(currentRecipe.displayProduct());
+        });
+        constraints.gridx = 4;
+        constraints.gridy = 9;
+        add(btnRemake, constraints);
+
+        btnExitLevel = new JButton("Exit Level");
+        btnExitLevel.addActionListener(e -> exitClicked());
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        add(btnExitLevel, constraints);
+    }
+
+    protected void setupTextAreas(GridBagConstraints constraints) {
+        currentProductTextArea = new JTextArea(800, 200);
+        currentProductTextArea.setEditable(false);
+        currentProductTextArea.setWrapStyleWord(true);
+        currentProductTextArea.setLineWrap(true);
+        currentProductTextArea.setOpaque(false);
+        currentProductTextArea.setText(currentRecipe.displayProduct());
+        constraints.gridx = 0;
+        constraints.gridy = 11;
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        add(currentProductTextArea, constraints);
+
+        aimTextArea = new JTextArea("Aim: $" + this.aimMoney);
+        aimTextArea.setEditable(false);
+        aimTextArea.setOpaque(false);
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        add(aimTextArea, constraints);
+
+        gainedTextArea = new JTextArea("Gained: $" + this.gainedMoney);
+        gainedTextArea.setEditable(false);
+        gainedTextArea.setOpaque(false);
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        add(gainedTextArea, constraints);
+
+        timeTextArea = new JTextArea("Remaining Time: " + this.levelTime);
+        timeTextArea.setEditable(false);
+        timeTextArea.setOpaque(false);
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        add(timeTextArea, constraints);
+    }
+
+    protected void gameSucceed() {
+        new SucceedGUI(currentLevel, recipeBook);  
+    }
+
+    protected void gameFail() {
+        new FailGUI(recipeBook);  
+    }
+
+    protected void timeUp() {
+        if (gainedMoney >= aimMoney) {
+            gameSucceed();
+        } else {
+            gameFail();
+        }
+    }
+
+    protected void exitClicked() {
+        dispose();
+        new MainGUI(recipeBook); 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+
+public class Level1GUI extends Level {
+
+
+    public Level1GUI(RecipeBook rb) {
+        super(rb);
+        this.currentLevel = 1;
+        this.customers.add(new Customer("Alice", rb.getRecipes().get(0)));
+    }
+
+    private JButton createIngredientButton(String ingredient) {
+        JButton button = new JButton("Add " + ingredient);
+        button.addActionListener(e -> {
+            currentRecipe.addIngredient(ingredient.toLowerCase());
+            currentProductTextArea.setText(currentRecipe.displayProduct());
+        });
+        return button;
+    }
+
+    private void displayRecipe(ActionEvent e) {
+        RecipeBookGUI rbg = new RecipeBookGUI(checkTimes, recipeBook, this);  
+        checkTimes++;
+    }
+}
