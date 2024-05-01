@@ -47,6 +47,7 @@ public class FailGUI extends JFrame {
     }
 
     public void newClicked() {
+        this.dispose();
         new MainGUI(rb);
     }
 
