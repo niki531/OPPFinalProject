@@ -10,10 +10,12 @@ public class RecipeBookGUI extends JFrame {
     private JPanel recipePanel; 
     private JTextArea[] textAreas; 
     private JFrame previousGUI; 
+    private int currentLevel;
 
-    public RecipeBookGUI(int checktimes, RecipeBook rb, JFrame previousGUI) {
+    public RecipeBookGUI(int checktimes, RecipeBook rb, JFrame previousGUI, int currentLevel) {
         this.recipeBook = rb.getRecipes();
         this.previousGUI = previousGUI; 
+        this.currentLevel = currentLevel;
 
         setSize(1000, 800);
         setLocationRelativeTo(null);
@@ -31,8 +33,7 @@ public class RecipeBookGUI extends JFrame {
             textAreas[i].setLineWrap(true);
             textAreas[i].setOpaque(false);
             textAreas[i].setMargin(new Insets(10, 30, 10, 30));
-            JScrollPane scrollPane = new JScrollPane(textAreas[i]);
-            recipePanel.add(scrollPane);
+            recipePanel.add(textAreas[i]);
         }
 
         btnExit.addActionListener(new ActionListener() {
@@ -47,7 +48,6 @@ public class RecipeBookGUI extends JFrame {
 
         setVisible(true);
 
-        // Load recipes based on the checktimes
         if (checktimes == 0) {
             displayAll();
         } else {
@@ -56,8 +56,8 @@ public class RecipeBookGUI extends JFrame {
     }
 
     public void displayAll() {
-        int perColumn = (int) Math.ceil(recipeBook.size() / 3.0);
-        for (int i = 0, col = 0; i < recipeBook.size(); i++) {
+        int perColumn = 2;
+        for (int i = 0, col = 0; i < currentLevel; i++) {
             if (i > 0 && i % perColumn == 0 && col < 2) col++;  
             textAreas[col].append(recipeBook.get(i).displayRecipe() + "\n\n");
         }
@@ -65,8 +65,8 @@ public class RecipeBookGUI extends JFrame {
     
     public void displayPart() {
         int partSize = Math.min(recipeBook.size(), 10); 
-        int perColumn = (int) Math.ceil(partSize / 3.0);
-        for (int i = 0, col = 0; i < partSize; i++) {
+        int perColumn = 2;
+        for (int i = 0, col = 0; i < currentLevel; i++) {
             if (i > 0 && i % perColumn == 0 && col < 2) col++;  
             textAreas[col].append(recipeBook.get(i).displayPartRecipe() + "\n\n");
         }
