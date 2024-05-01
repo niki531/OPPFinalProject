@@ -26,6 +26,10 @@ public class Customer {
         return this.tip;
     }
 
+    public Recipe getOrder(){
+        return this.order;
+    }
+
     public String getName() {
         return this.name;
     }
