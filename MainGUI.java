@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class MainGUI extends JFrame {
 
@@ -57,12 +58,14 @@ public class MainGUI extends JFrame {
     }
 
     public void instructionClicked() {
-        new InstructionGUI(); 
+        new InstructionGUI(rb); 
     }
 
     public void startGameClicked() {
-        new Level1GUI(rb);
         this.dispose();
+        ArrayList<Customer> customers = new ArrayList<>();
+        customers.add(new Customer("Alice", rb.getRecipes().get(0)));
+        new LevelGUI(rb, customers, 10,10000,1);
     }
 
     public void exitClicked() {
