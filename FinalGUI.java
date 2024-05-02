@@ -8,10 +8,8 @@ public class FinalGUI extends JFrame {
     private JTextArea txtFinal;
     private JButton btnMain;
     private JButton btnExit;
-    private RecipeBook rb;
 
-    public FinalGUI(RecipeBook rb) {
-        this.rb = rb;
+    public FinalGUI() {
         setTitle("Final");
         setSize(1000, 800);
         setLocationRelativeTo(null);
@@ -29,7 +27,7 @@ public class FinalGUI extends JFrame {
         btnMain = new JButton("Main Menu");
         btnMain.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mainClicked(rb);
+                mainClicked();
             }
         });
         panel.add(btnMain);
@@ -47,9 +45,9 @@ public class FinalGUI extends JFrame {
         setVisible(true);
     }
 
-    public void mainClicked(RecipeBook rb) {
+    public void mainClicked() {
         this.dispose();
-        new MainGUI(rb);
+        new MainGUI();
     }
 
     public void exitClicked() {
