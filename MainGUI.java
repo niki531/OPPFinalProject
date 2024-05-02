@@ -63,9 +63,7 @@ public class MainGUI extends JFrame {
 
     public void startGameClicked() {
         this.dispose();
-        ArrayList<Customer> customers = new ArrayList<>();
-        customers.add(new Customer("Alice", rb.getRecipes().get(0)));
-        new LevelGUI(rb, customers, 10,10000,1);
+        new LevelManager(rb,1);
     }
 
     public void exitClicked() {
