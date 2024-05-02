@@ -6,10 +6,9 @@ public class InstructionGUI extends JFrame {
 
     private JButton btnExit;
     private JTextArea txtInstruction;
-    private RecipeBook rb;
     private String instruction = "Welcome to Bartenders Simulation!\n\n" + 
                                  "In this game, you will take on the role of a bartender, mixing cocktails to meet customer preferences within a fixed amount of time.\n\n" +
-                                 "At the beginning of each level, you will be shown a list of customers, each asking for a specific cocktail.\n\n"+
+                                 "At the beginning of each level, you will be shown a list of customers, each asking for a specific cocktail. (You may meet someone you know!)\n\n"+
                                  "Click the recipe book to check the recipe book. Find the recipe you need, pay attention to the required ingredients, the amount needed, and the specific mixing sequence. (Each serving of spirits is 1/2oz)\n\n"+
                                  "For each level, the first time of checking recipe book is free. But if you check it more than once, only part of the recipe will shown.\n\n" + 
                                  "To make a successful cocktail, you must add ingredients and perform operations in the correct sequence.\n\n"+
@@ -20,8 +19,7 @@ public class InstructionGUI extends JFrame {
                                  "You must earn enough money within the time limit to pass the level and advance.\n\n" + 
                                  "Good Luck and Happy Mixing!";                                 
                                  
-    public InstructionGUI(RecipeBook rb) {
-        this.rb=rb;
+    public InstructionGUI() {
         setTitle("Instructions");
         setSize(1000, 800); 
         setLocationRelativeTo(null); 
@@ -55,6 +53,6 @@ public class InstructionGUI extends JFrame {
 
     public void exitClicked() {
         this.dispose(); 
-        new MainGUI(rb);
+        new MainGUI();
     }
 }
