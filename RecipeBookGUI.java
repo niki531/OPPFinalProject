@@ -11,8 +11,10 @@ public class RecipeBookGUI extends JFrame {
     private JTextArea[] textAreas; 
     private JFrame previousGUI; 
     private int currentLevel;
+    private RecipeBook rb;
 
-    public RecipeBookGUI(int checktimes, RecipeBook rb, JFrame previousGUI, int currentLevel) {
+    public RecipeBookGUI(int checktimes, JFrame previousGUI, int currentLevel) {
+        this.rb = RecipeBook.getInstance();
         this.recipeBook = rb.getRecipes();
         this.previousGUI = previousGUI; 
         this.currentLevel = currentLevel;
