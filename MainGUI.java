@@ -4,14 +4,11 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MainGUI extends JFrame {
-
     private JButton btnInstruction;
     private JButton btnStartGame;
     private JButton btnExit;
-    private RecipeBook rb;
 
-    public MainGUI(RecipeBook rb) {
-        this.rb = rb;
+    public MainGUI() {
         setTitle("Bartenders Simulation");
         setSize(1000, 800); 
         setLocationRelativeTo(null); 
@@ -58,12 +55,12 @@ public class MainGUI extends JFrame {
     }
 
     public void instructionClicked() {
-        new InstructionGUI(rb); 
+        new InstructionGUI(); 
     }
 
     public void startGameClicked() {
         this.dispose();
-        new LevelManager(rb,1);
+        LevelManager.getInstance().displayLevel(1);
     }
 
     public void exitClicked() {
