@@ -3,9 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class InstructionGUI extends JFrame {
-
     private JButton btnExit;
     private JTextArea txtInstruction;
+    private static InstructionGUI instance;   
+
     private String instruction = "Welcome to Bartenders Simulation!\n\n" + 
                                  "In this game, you will take on the role of a bartender, mixing cocktails to meet customer preferences within a fixed amount of time.\n\n" +
                                  "At the beginning of each level, you will be shown a list of customers, each asking for a specific cocktail. (You may meet someone you know!)\n\n"+
@@ -19,7 +20,7 @@ public class InstructionGUI extends JFrame {
                                  "You must earn enough money within the time limit to pass the level and advance.\n\n" + 
                                  "Good Luck and Happy Mixing!";                                 
                                  
-    public InstructionGUI() {
+    private InstructionGUI() {
         setTitle("Instructions");
         setSize(1000, 800); 
         setLocationRelativeTo(null); 
@@ -34,12 +35,6 @@ public class InstructionGUI extends JFrame {
         });
 
         txtInstruction = new JTextArea(10, 30);
-        displayInstruction();        
-        
-
-    }
-
-    public void displayInstruction() {
         txtInstruction.setText(instruction); 
         txtInstruction.setWrapStyleWord(true);
         txtInstruction.setLineWrap(true);
@@ -47,12 +42,27 @@ public class InstructionGUI extends JFrame {
         txtInstruction.setOpaque(false); 
         txtInstruction.setMargin(new Insets(10, 30, 10, 30)); 
         add(txtInstruction, BorderLayout.CENTER);
-        add(btnExit, BorderLayout.SOUTH);
+        add(btnExit, BorderLayout.SOUTH);     
+        setVisible(false);
+    }
+
+    public void displayInstruction() {
         setVisible(true);
+    }
+
+    public static InstructionGUI getInstance() {
+        if (instance == null) {
+            synchronized (InstructionGUI.class) {
+                if (instance == null) {
+                    instance = new InstructionGUI();
+                }
+            }
+        }
+        return instance;
     }
 
     public void exitClicked() {
         this.dispose(); 
-        new MainGUI();
+        MainGUI.getInstance().displayMain();
     }
 }
