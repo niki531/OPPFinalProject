@@ -177,6 +177,7 @@ public class LevelGUI extends JFrame {
 
     public void customerPay(Customer customer) {
         int m = customer.compareNPay(product);
+        CustomerLeaveGUI leaveGUI = new CustomerLeaveGUI(this, m, true);
         gainMoney += m;
         gainArea.setText("Gained: $" + gainMoney);
         product.clear();
