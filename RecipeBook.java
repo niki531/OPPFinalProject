@@ -9,8 +9,9 @@ import java.io.IOException;
 
 public class RecipeBook {
     private ArrayList<Recipe> recipeList;
+    private static RecipeBook instance;
 
-    public RecipeBook() {
+    private RecipeBook() {
         this.recipeList = new ArrayList<>();
     }
 
@@ -26,7 +27,18 @@ public class RecipeBook {
     public ArrayList<Recipe> getRecipes() {
         return recipeList;
     } 
-    
+
+    public static RecipeBook getInstance() {
+        if (instance == null) {
+            synchronized (RecipeBook.class) {
+                if (instance == null) {
+                    instance = new RecipeBook();
+                }
+            }
+        }
+        return instance;
+    }
+
     public void initializeRecipeBook(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
