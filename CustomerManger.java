@@ -13,7 +13,7 @@ public interface CustomerManager {
             "Matthew", "Nicole", "Anthony", "Betty", "Mark", "Sandra", "Steven", "Ashley",
             "Paul", "Dorothy", "Andrew", "Catherine", "Joshua", "Emily", "Kevin", "Donna",
             "Brian", "Michelle", "George", "Carol", "Edward", "Amanda", "Ronald", "Melissa",
-            "Mr. Aljabbouli", "Mr. Khamse"
+            "Mr. Aljabbouli"
         );
         Collections.shuffle(names);
 
