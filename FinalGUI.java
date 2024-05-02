@@ -8,8 +8,9 @@ public class FinalGUI extends JFrame {
     private JTextArea txtFinal;
     private JButton btnMain;
     private JButton btnExit;
+    private static FinalGUI instance;
 
-    public FinalGUI() {
+    private FinalGUI() {
         setTitle("Final");
         setSize(1000, 800);
         setLocationRelativeTo(null);
@@ -46,11 +47,30 @@ public class FinalGUI extends JFrame {
     }
 
     public void mainClicked() {
-        this.dispose();
-        new MainGUI();
+        hideFinal();
+        MainGUI.getInstance().displayMain();
     }
 
     public void exitClicked() {
         System.exit(0);
+    }
+
+    public static FinalGUI getInstance() {
+        if (instance == null) {
+            synchronized (FinalGUI.class) {
+                if (instance == null) {
+                    instance = new FinalGUI();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public void displayFinal() {
+        setVisible(true);
+    }
+
+    public void hideFinal() {
+        setVisible(false);
     }
 }
