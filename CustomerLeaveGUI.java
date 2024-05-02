@@ -32,7 +32,7 @@ public class CustomerLeaveGUI extends JDialog {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
-        btnExit = new JButton("Exit");
+        btnExit = new JButton("Continue");
         btnExit.addActionListener(this::exitClicked);
         panel.add(btnExit);
 
