@@ -48,7 +48,7 @@ public class SucceedGUI extends JFrame {
     }
 
     public void nextClicked() {
-        this.dispose();
+        dispose();
         currentLevel++;
         LevelManager.getInstance().displayLevel(currentLevel);
     }
