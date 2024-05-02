@@ -6,7 +6,7 @@ public class Main{
             public void run() {
                 RecipeBook rb = RecipeBook.getInstance();
                 rb.initializeRecipeBook("recipes.txt");
-                new MainGUI(); 
+                MainGUI.getInstance().displayMain();
             }
         });
     }
