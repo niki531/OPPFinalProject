@@ -13,7 +13,6 @@ public class LevelGUI extends JFrame {
     private JTextArea currentProduct, aimArea, gainArea, timeArea;
     private ArrayList<JButton> customerButtons;
     private JButton btnRecipe, btnExitLevel, btnRemake;
-    private Timer timer;
     private int levelTime;
     private int count = 0;
     private int checktimes = 0;  
@@ -37,7 +36,6 @@ public class LevelGUI extends JFrame {
         this.product = new Recipe("Product", 0);
 
         setupGUI();
-        setupTimer();
         setVisible(false);
     }
 
@@ -197,20 +195,7 @@ public class LevelGUI extends JFrame {
         currentProduct.setText(product.displayProduct());
     }
 
-    public void setupTimer() {
-        timer = new Timer(1000, e -> {
-            count++;
-            timeArea.setText("Remaining Time: " + (levelTime - count));
-            if (count >= levelTime) {
-                timeUp();
-                timer.stop();
-            }
-        });
-        timer.start();
-    }
-
     public void timeUp() {
-        timer.stop();
         if (gainMoney >= aimMoney) {
             gameSucceed();
         } else {
@@ -219,29 +204,52 @@ public class LevelGUI extends JFrame {
     }
 
     public void visibleLevel(){
+        resetLevelState();
+        TimerController.getInstance().startTimer(levelTime, this::updateTimeDisplay, this::timeUp);
         setVisible(true);
     }
 
+    public void updateTimeDisplay() {
+        timeArea.setText("Remaining Time: " + (levelTime - TimerController.getInstance().getCurrentTime()));
+    }
+    
+    public void resetLevelState() {
+        count = 0;
+        gainMoney = 0;
+        drinkCount = 0;
+        for (JButton button : customerButtons) {
+            button.setEnabled(true);
+        }
+        product.clear();
+        currentProduct.setText(product.displayProduct());
+        gainArea.setText("Gained: $" + gainMoney);
+        timeArea.setText("Remaining Time: " + levelTime);
+    }
+    
+    public void hideLevel(){
+        setVisible(false);
+    }
+
     public void gameSucceed() {
-        timer.stop();
-        this.dispose();
+        TimerController.getInstance().stopTimer();
+        hideLevel();
         if (currentLevel<6){
             new SucceedGUI(currentLevel);
         }
         else{
-            new FinalGUI();
+            FinalGUI.getInstance().displayFinal();
         }
     }
 
     public void gameFail() {
-        timer.stop();
-        this.dispose();
-        new FailGUI();
+        TimerController.getInstance().stopTimer();
+        hideLevel();
+        FailGUI.getInstance().displayFail();
     }
 
     public void exitClicked() {
-        timer.stop();
-        dispose();
-        new MainGUI();
+        TimerController.getInstance().stopTimer();
+        hideLevel();
+        MainGUI.getInstance().displayMain();
     }
 }
