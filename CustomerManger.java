@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public interface CustomerManager {
-    public static ArrayList<Customer> getLevelCustomers(int level, RecipeBook rb) {
+    public static ArrayList<Customer> getLevelCustomers(int level) {
+        RecipeBook rb = RecipeBook.getInstance();
         ArrayList<Customer> customers = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
         Collections.addAll(names,
