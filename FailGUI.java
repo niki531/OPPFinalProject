@@ -7,8 +7,9 @@ public class FailGUI extends JFrame {
     private JTextArea txtFail;
     private JButton btnNew;
     private JButton btnExit;
+    private static FailGUI instance;
 
-    public FailGUI() {
+    private FailGUI() {
         setTitle("Game Failed...");
         setSize(1000, 800);
         setLocationRelativeTo(null);
@@ -41,16 +42,34 @@ public class FailGUI extends JFrame {
 
         add(panel, BorderLayout.SOUTH);
 
-        setVisible(true);
+        setVisible(false);
     }
 
     public void newClicked() {
-        this.dispose();
-        new MainGUI();
+        hideFail();
+        MainGUI.getInstance().displayMain();
     }
 
     public void exitClicked() {
         System.exit(0);
     }
 
+    public static FailGUI getInstance() {
+        if (instance == null) {
+            synchronized (FailGUI.class) {
+                if (instance == null) {
+                    instance = new FailGUI();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public void displayFail() {
+        setVisible(true);
+    }
+
+    public void hideFail() {
+        setVisible(false);
+    }
 }
