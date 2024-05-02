@@ -4,9 +4,9 @@ public class Main{
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                RecipeBook rb = new RecipeBook();
+                RecipeBook rb = RecipeBook.getInstance();
                 rb.initializeRecipeBook("recipes.txt");
-                new MainGUI(rb); 
+                new MainGUI(); 
             }
         });
     }
