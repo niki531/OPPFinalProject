@@ -41,7 +41,7 @@ public class CustomerLeaveGUI extends JDialog {
         setVisible(true);
     }
 
-    private void exitClicked(ActionEvent e) {
+    public void exitClicked(ActionEvent e) {
         dispose();
     }
 }
