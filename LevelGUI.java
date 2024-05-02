@@ -22,7 +22,7 @@ public class LevelGUI extends JFrame {
     private int currentLevel;
     private int drinkCount = 0;
 
-    public LevelGUI(RecipeBook rb, ArrayList<Customer> customers, int aimMoney, int levelTime, int currentLevel) {
+    public LevelGUI(ArrayList<Customer> customers, int aimMoney, int levelTime, int currentLevel) {
         setTitle("Level " + currentLevel);
         setSize(1000, 800);
         setLocationRelativeTo(null);
@@ -33,12 +33,12 @@ public class LevelGUI extends JFrame {
         this.currentLevel = currentLevel;
         this.customers = customers;
         this.customerButtons = new ArrayList<>();
-        this.recipebook = rb;
+        this.recipebook = RecipeBook.getInstance();
         this.product = new Recipe("Product", 0);
 
         setupGUI();
         setupTimer();
-        setVisible(true);
+        setVisible(false);
     }
 
     public void setupGUI() {
@@ -187,7 +187,7 @@ public class LevelGUI extends JFrame {
     }
 
     public void recipeAction(ActionEvent e) {
-        RecipeBookGUI rbg = new RecipeBookGUI(checktimes,recipebook, this,currentLevel);
+        RecipeBookGUI rbg = new RecipeBookGUI(checktimes,this,currentLevel);
         rbg.setVisible(true);
         checktimes++;
     }
@@ -210,6 +210,7 @@ public class LevelGUI extends JFrame {
     }
 
     public void timeUp() {
+        timer.stop();
         if (gainMoney >= aimMoney) {
             gameSucceed();
         } else {
@@ -217,23 +218,30 @@ public class LevelGUI extends JFrame {
         }
     }
 
+    public void visibleLevel(){
+        setVisible(true);
+    }
+
     public void gameSucceed() {
+        timer.stop();
         this.dispose();
         if (currentLevel<6){
-            new SucceedGUI(currentLevel,recipebook);
+            new SucceedGUI(currentLevel);
         }
         else{
-            new FinalGUI(recipebook);
+            new FinalGUI();
         }
     }
 
     public void gameFail() {
+        timer.stop();
         this.dispose();
-        new FailGUI(recipebook);
+        new FailGUI();
     }
 
     public void exitClicked() {
+        timer.stop();
         dispose();
-        new MainGUI(recipebook);
+        new MainGUI();
     }
 }
