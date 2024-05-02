@@ -2,35 +2,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelManager {
-    private RecipeBook rb;
-    private int currentLevel;
+    private ArrayList<LevelGUI> levels;
+    private static LevelManager instance;
 
-    public LevelManager(RecipeBook rb, int currentLevel) {
-        this.rb = rb;
-        this.currentLevel = currentLevel;
-        levelInitialize(this.currentLevel);
+    private LevelManager() {
+        this.levels = new ArrayList<>();
+        LevelGUI level1 = new LevelGUI(CustomerManager.getLevelCustomers(1), 10, 60,1);
+        LevelGUI level2 = new LevelGUI(CustomerManager.getLevelCustomers(2), 25, 90,2);
+        LevelGUI level3 = new LevelGUI(CustomerManager.getLevelCustomers(3), 35, 120,3);
+        LevelGUI level4 = new LevelGUI(CustomerManager.getLevelCustomers(4), 55, 150,4);
+        LevelGUI level5 = new LevelGUI(CustomerManager.getLevelCustomers(5), 75, 180,5);
+        LevelGUI level6 = new LevelGUI(CustomerManager.getLevelCustomers(6), 100, 210,6);
+
+        levels.add(level1);
+        levels.add(level2);
+        levels.add(level3);
+        levels.add(level4);
+        levels.add(level5);
+        levels.add(level6);
+    }
+    
+    public static LevelManager getInstance() {
+        if (instance == null) {
+            synchronized (LevelManager.class) {
+                if (instance == null) {
+                    instance = new LevelManager();
+                }
+            }
+        }
+        return instance;
     }
 
-    public void levelInitialize(int currentLevel){
-        switch (currentLevel) {
-            case 1:
-                new LevelGUI(rb, CustomerManager.getLevelCustomers(currentLevel,rb), 10, 60,currentLevel);
-                break;
-            case 2:
-                new LevelGUI(rb, CustomerManager.getLevelCustomers(currentLevel,rb), 25, 90,currentLevel);
-                break;
-            case 3:
-                new LevelGUI(rb, CustomerManager.getLevelCustomers(currentLevel,rb), 35, 120,currentLevel);
-                break;
-            case 4:
-                new LevelGUI(rb, CustomerManager.getLevelCustomers(currentLevel,rb), 55, 150,currentLevel);
-                break;
-            case 5:
-                new LevelGUI(rb, CustomerManager.getLevelCustomers(currentLevel,rb), 75, 180,currentLevel);
-                break;
-            case 6:
-                new LevelGUI(rb, CustomerManager.getLevelCustomers(currentLevel,rb), 100, 210,currentLevel);
-                break;
-        }
+    public void displayLevel (int currentLevel){
+       LevelGUI a = levels.get(currentLevel-1);
+       a.visibleLevel();
     }
 }
