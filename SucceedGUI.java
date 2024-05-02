@@ -51,46 +51,8 @@ public class SucceedGUI extends JFrame {
 
     public void nextClicked(RecipeBook rb) {
         this.dispose();
-        if (currentLevel== 1){
-            ArrayList<Customer> customers = new ArrayList<>();
-            customers.add(new Customer("Alice", rb.getRecipes().get(0)));
-            customers.add(new Customer("Bob", rb.getRecipes().get(1))); 
-            new LevelGUI(rb, customers, 10,10000,2);
-        }
-        if (currentLevel== 2){
-            ArrayList<Customer> customers = new ArrayList<>();
-            customers.add(new Customer("Alice", rb.getRecipes().get(0)));
-            customers.add(new Customer("Bob", rb.getRecipes().get(1))); 
-            customers.add(new Customer("Chris", rb.getRecipes().get(2))); 
-            new LevelGUI(rb, customers, 10,10000,3);
-        }
-        if (currentLevel== 3){
-            ArrayList<Customer> customers = new ArrayList<>();
-            customers.add(new Customer("Alice", rb.getRecipes().get(0)));
-            customers.add(new Customer("Bob", rb.getRecipes().get(1))); 
-            customers.add(new Customer("Chris", rb.getRecipes().get(2))); 
-            customers.add(new Customer("David", rb.getRecipes().get(3))); 
-            new LevelGUI(rb, customers, 10,10000,4);
-        }
-        if (currentLevel== 4){
-            ArrayList<Customer> customers = new ArrayList<>();
-            customers.add(new Customer("Alice", rb.getRecipes().get(0)));
-            customers.add(new Customer("Bob", rb.getRecipes().get(1))); 
-            customers.add(new Customer("Chris", rb.getRecipes().get(2))); 
-            customers.add(new Customer("David", rb.getRecipes().get(3))); 
-            customers.add(new Customer("Emily", rb.getRecipes().get(4))); 
-            new LevelGUI(rb, customers, 10,10000,5);
-        }
-        if (currentLevel== 5){
-            ArrayList<Customer> customers = new ArrayList<>();
-            customers.add(new Customer("Alice", rb.getRecipes().get(0)));
-            customers.add(new Customer("Bob", rb.getRecipes().get(1))); 
-            customers.add(new Customer("Chris", rb.getRecipes().get(2))); 
-            customers.add(new Customer("David", rb.getRecipes().get(3))); 
-            customers.add(new Customer("Emily", rb.getRecipes().get(4))); 
-            customers.add(new Customer("Frank", rb.getRecipes().get(5))); 
-            new LevelGUI(rb, customers, 10,10000,6);
-        }
+        currentLevel++;
+        new LevelManager(rb, currentLevel);
     }
 
     public void exitClicked() {
