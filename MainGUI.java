@@ -7,8 +7,9 @@ public class MainGUI extends JFrame {
     private JButton btnInstruction;
     private JButton btnStartGame;
     private JButton btnExit;
+    private static MainGUI instance;
 
-    public MainGUI() {
+    private MainGUI() {
         setTitle("Bartenders Simulation");
         setSize(1000, 800); 
         setLocationRelativeTo(null); 
@@ -51,15 +52,35 @@ public class MainGUI extends JFrame {
         constraints.gridx = 2; 
         add(btnExit, constraints);
 
+        hideMain();
+    }
+
+    public static MainGUI getInstance() {
+        if (instance == null) {
+            synchronized (MainGUI.class) {
+                if (instance == null) {
+                    instance = new MainGUI();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public void displayMain() {
         setVisible(true);
     }
 
+    public void hideMain() {
+        setVisible(false);
+    }
+
     public void instructionClicked() {
-        new InstructionGUI(); 
+        this.hideMain();
+        InstructionGUI.getInstance().displayInstruction(); 
     }
 
     public void startGameClicked() {
-        this.dispose();
+        this.hideMain();
         LevelManager.getInstance().displayLevel(1);
     }
 
