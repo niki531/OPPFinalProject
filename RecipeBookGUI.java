@@ -12,10 +12,12 @@ public class RecipeBookGUI extends JFrame {
     private JFrame previousGUI; 
     private int currentLevel;
     private RecipeBook rb;
+    private int checktimes;
 
     public RecipeBookGUI(int checktimes, JFrame previousGUI, int currentLevel) {
         this.rb = RecipeBook.getInstance();
         this.recipeBook = rb.getRecipes();
+        this.checktimes = checktimes;
         this.previousGUI = previousGUI; 
         this.currentLevel = currentLevel;
 
