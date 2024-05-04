@@ -136,7 +136,10 @@ public class LevelGUI extends JFrame {
         btnRemake = new JButton("Remake");
 
         btnRecipe.addActionListener(this::recipeAction);
-        btnExitLevel.addActionListener(e -> exitClicked());
+        btnExitLevel.addActionListener(e -> {
+            this.checktimes = 0;
+            exitClicked();             
+        });
         btnRemake.addActionListener(e -> remakeAction());
 
         addButton(btnRecipe, constraints, 0, 1);
@@ -234,6 +237,7 @@ public class LevelGUI extends JFrame {
         TimerController.getInstance().stopTimer();
         hideLevel();
         if (currentLevel<6){
+            this.checktimes = 0;
             new SucceedGUI(currentLevel);
         }
         else{
