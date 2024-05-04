@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelManager {
+public class LevelManager implements CustomerManager {
     private ArrayList<LevelGUI> levels;
     private static LevelManager instance;
 
