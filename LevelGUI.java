@@ -220,6 +220,7 @@ public class LevelGUI extends JFrame {
         count = 0;
         gainMoney = 0;
         drinkCount = 0;
+        checktimes = 0;
         for (JButton button : customerButtons) {
             button.setEnabled(true);
         }
@@ -237,7 +238,7 @@ public class LevelGUI extends JFrame {
         TimerController.getInstance().stopTimer();
         hideLevel();
         if (currentLevel<6){
-            this.checktimes = 0;
+            checktimes = 0;
             new SucceedGUI(currentLevel);
         }
         else{
