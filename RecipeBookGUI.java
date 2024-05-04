@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RecipeBookGUI extends JFrame {
-    private ArrayList<Recipe> recipeBook;
     private JButton btnExit;
     private JPanel recipePanel; 
     private JTextArea[] textAreas; 
@@ -16,7 +15,6 @@ public class RecipeBookGUI extends JFrame {
 
     public RecipeBookGUI(int checktimes, JFrame previousGUI, int currentLevel) {
         this.rb = RecipeBook.getInstance();
-        this.recipeBook = rb.getRecipes();
         this.checktimes = checktimes;
         this.previousGUI = previousGUI; 
         this.currentLevel = currentLevel;
@@ -63,16 +61,16 @@ public class RecipeBookGUI extends JFrame {
         int perColumn = 2;
         for (int i = 0, col = 0; i < currentLevel; i++) {
             if (i > 0 && i % perColumn == 0 && col < 2) col++;  
-            textAreas[col].append(recipeBook.get(i).displayRecipe() + "\n\n");
+            textAreas[col].append(rb.getRecipes().get(i).displayRecipe() + "\n\n");
         }
     }
     
     public void displayPart() {
-        int partSize = Math.min(recipeBook.size(), 10); 
+        int partSize = Math.min(rb.getRecipes().size(), 10); 
         int perColumn = 2;
         for (int i = 0, col = 0; i < currentLevel; i++) {
             if (i > 0 && i % perColumn == 0 && col < 2) col++;  
-            textAreas[col].append(recipeBook.get(i).displayPartRecipe() + "\n\n");
+            textAreas[col].append(rb.getRecipes().get(i).displayPartRecipe() + "\n\n");
         }
     }    
 
